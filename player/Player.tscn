@@ -1,0 +1,58 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://player/Player.gd" type="Script" id=1]
+[ext_resource path="res://player/drone_sm.png" type="Texture" id=2]
+[ext_resource path="res://player/bug_sm.png" type="Texture" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 30.0
+
+[sub_resource type="Animation" id=2]
+resource_name = "walking"
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1, 3 ]
+}
+
+[node name="Player" type="KinematicBody2D"]
+collision_layer = 17
+collision_mask = 47
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+visible = false
+color = Color( 0.376471, 0.231373, 0.227451, 1 )
+polygon = PoolVector2Array( 3.89053, -31.5267, -17.7102, -25.8347, -29.0727, -11.3701, -27.3725, 15.6389, -10.6979, 29.9453, 5.62799, 30.8013, 20.4835, 23.4863, 31.3446, 2.55762, 24.0607, -20.186 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+hframes = 2
+vframes = 2
+frame = 3
+region_rect = Rect2( 100, 100, 100, 100 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 100, 100, 100, 100 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "walking"
+anims/walking = SubResource( 2 )

@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://enemy/drone_sm.png" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 17.0613, 50 )
+
+[node name="EnemyDummy" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="drone_sm" type="Sprite" parent="."]
+self_modulate = Color( 0.247059, 0.0627451, 0.607843, 1 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 100, 100, 100, 100 )

@@ -1,0 +1,110 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://porta/Porta.tscn" type="PackedScene" id=2]
+[ext_resource path="res://music/POL-dark-crossing-short.ogg" type="AudioStream" id=3]
+[ext_resource path="res://Level2.gd" type="Script" id=4]
+[ext_resource path="res://Terminal/Terminal.tscn" type="PackedScene" id=5]
+[ext_resource path="res://trap/TrapTrigger.tscn" type="PackedScene" id=6]
+[ext_resource path="res://enemy_dummy/EnemyDummy.tscn" type="PackedScene" id=7]
+[ext_resource path="res://CountDown/CountDown.tscn" type="PackedScene" id=8]
+[ext_resource path="res://player/Player.tscn" type="PackedScene" id=9]
+[ext_resource path="res://icon.png" type="Texture" id=10]
+
+[node name="Level2" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="Navigation2D" type="Navigation2D" parent="."]
+show_behind_parent = true
+
+[node name="TileMap" type="TileMap" parent="Navigation2D"]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 100, 100 )
+collision_layer = 8
+format = 1
+tile_data = PoolIntArray( -196607, 0, 0, -196606, -1610612734, 0, -196605, -1610612734, 0, -196604, -1610612736, 0, -131071, 2, 0, -131070, 1610612742, 0, -131069, 1610612742, 0, -131068, 1610612738, 0, -65535, 2, 0, -65534, 1610612742, 0, -65533, 1610612742, 0, -65532, 1610612738, 0, 0, 0, 0, 1, 1, 0, 2, 6, 0, 3, 6, 0, 4, 1, 0, 5, 6, 0, 6, 6, 0, 7, 1, 0, 8, 1, 0, 9, -1610612736, 0, 65536, 2, 0, 65537, 6, 0, 65538, 6, 0, 65539, 6, 0, 65540, 6, 0, 65541, 6, 0, 65542, 6, 0, 65543, 6, 0, 65544, 6, 0, 65545, 1610612750, 0, 65546, 1, 0, 65547, -1610612736, 0, 131072, 6, 0, 131073, 6, 0, 131074, 6, 0, 131075, -1073741810, 0, 131076, 14, 0, 131077, 6, 0, 131078, -1073741810, 0, 131079, 14, 0, 131080, 6, 0, 131081, 6, 0, 131082, 6, 0, 131083, -1610612730, 0, 196608, 6, 0, 196609, 6, 0, 196610, 6, 0, 196611, 1610612750, 0, 196612, -1610612722, 0, 196613, 6, 0, 196614, 1610612750, 0, 196615, -1610612722, 0, 196616, 6, 0, 196617, 6, 0, 196618, 6, 0, 196619, -1610612730, 0, 262144, 2, 0, 262145, 6, 0, 262146, 6, 0, 262147, 6, 0, 262148, 6, 0, 262149, 6, 0, 262150, 6, 0, 262151, 6, 0, 262152, 6, 0, 262153, -1073741810, 0, 262154, -1073741822, 0, 262155, 1610612736, 0, 327680, -1073741823, 0, 327681, 6, 0, 327682, 6, 0, 327683, -1073741810, 0, 327684, 1610612737, 0, 327685, 1610612737, 0, 327686, 14, 0, 327687, 6, 0, 327688, -1073741810, 0, 327689, 1610612736, 0, 393216, -1073741824, 0, 393217, 14, 0, 393218, 6, 0, 393219, 1610612750, 0, 393220, 1, 0, 393221, 1, 0, 393222, -1610612722, 0, 393223, 6, 0, 393224, 1610612746, 0, 458753, 10, 0, 458754, 6, 0, 458755, 6, 0, 458756, 6, 0, 458757, 6, 0, 458758, 6, 0, 458759, 6, 0, 458760, 1610612746, 0, 524289, -1073741824, 0, 524290, 1610612737, 0, 524291, 1610612737, 0, 524292, -1073741818, 0, 524293, -1073741818, 0, 524294, 1610612737, 0, 524295, 1610612737, 0, 524296, 1610612736, 0 )
+
+[node name="Enemies" type="Node2D" parent="Navigation2D"]
+
+[node name="InBetween" type="Node2D" parent="Navigation2D"]
+
+[node name="CountDown" parent="Navigation2D/InBetween" instance=ExtResource( 8 )]
+position = Vector2( 297.639, -103.681 )
+
+[node name="EnemyDummy" parent="Navigation2D/InBetween" instance=ExtResource( 7 )]
+position = Vector2( 538.781, 830.795 )
+rotation = -1.5708
+
+[node name="EnemyDummy2" parent="Navigation2D/InBetween" instance=ExtResource( 7 )]
+position = Vector2( 457.016, 830.795 )
+rotation = -1.5708
+
+[node name="Player" parent="Navigation2D" instance=ExtResource( 9 )]
+position = Vector2( 163.925, 160.362 )
+
+[node name="TileMap2" type="TileMap" parent="Navigation2D"]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 100, 100 )
+collision_layer = 8
+format = 1
+tile_data = PoolIntArray( 5, -1610612721, 0, 131072, 15, 0, 131083, 1610612751, 0, 524292, -1073741807, 0 )
+
+[node name="Porta" parent="." instance=ExtResource( 2 )]
+position = Vector2( 299.825, 50.1246 )
+rotation = 1.5708
+locked = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Terminal" parent="." instance=ExtResource( 5 )]
+position = Vector2( 346.825, 851.179 )
+rotation = -1.5708
+
+[node name="TerminalSelfDestruct" parent="." instance=ExtResource( 5 )]
+position = Vector2( 298.962, -250.313 )
+rotation = 1.5708
+
+[node name="TrapTrigger" parent="." instance=ExtResource( 6 )]
+position = Vector2( 247.285, 551.98 )
+
+[node name="TrapTrigger2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 749.734, 654.585 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer2"]
+margin_left = 502.953
+margin_top = 228.189
+margin_right = 542.953
+margin_bottom = 242.189
+text = "TESTE"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="CanvasLayer2"]
+position = Vector2( 43.3176, 431.371 )
+normal = ExtResource( 10 )
+passby_press = true
+action = "ui_left"
+
+[node name="TouchScreenButton4" type="TouchScreenButton" parent="CanvasLayer2"]
+position = Vector2( 106.318, 496.631 )
+normal = ExtResource( 10 )
+passby_press = true
+action = "ui_down"
+
+[node name="TouchScreenButton3" type="TouchScreenButton" parent="CanvasLayer2"]
+position = Vector2( 104.318, 368.631 )
+normal = ExtResource( 10 )
+passby_press = true
+action = "ui_up"
+
+[node name="TouchScreenButton2" type="TouchScreenButton" parent="CanvasLayer2"]
+position = Vector2( 173.318, 430.631 )
+normal = ExtResource( 10 )
+passby_press = true
+action = "ui_right"

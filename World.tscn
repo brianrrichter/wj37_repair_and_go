@@ -1,0 +1,78 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Car.tscn" type="PackedScene" id=1]
+[ext_resource path="res://World.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 84.7194, 76.6008 )
+
+[node name="World" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Floor" type="Polygon2D" parent="."]
+color = Color( 0.486275, 0.580392, 0.631373, 1 )
+polygon = PoolVector2Array( -493.912, 1321.75, 2302.21, 1299.32, 2315.56, -596.153, -399.502, -331.854 )
+
+[node name="Borders" type="Polygon2D" parent="Floor"]
+position = Vector2( -213.574, -229.592 )
+color = Color( 0.466667, 0.454902, 0.309804, 1 )
+invert_enable = true
+invert_border = 1000.0
+polygon = PoolVector2Array( 21.0587, 42.2517, -60.4526, 1195.2, 1757.6, 1149.82, 1744.25, 9.86449 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Floor/Borders"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Floor/Borders/StaticBody2D"]
+polygon = PoolVector2Array( 25.8209, 40.6643, 1733.57, 9.86449, 1757.6, 1136.47, -60.4526, 1205.88, 35.4639, -201.614, -152.897, -120.888, -199.276, 1398.1, 1880.4, 1259.27, 1835.02, -75.5653, 8.3595, -151.411 )
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Floor/Borders/StaticBody2D"]
+polygon = PoolVector2Array( 173.371, 252.47, 1488.53, 255.833, 1535.62, 935.277, 170.007, 945.368, 281.006, 639.282 )
+
+[node name="Polygon2D" type="Polygon2D" parent="Floor/Borders"]
+color = Color( 0.207843, 0.243137, 0.294118, 1 )
+polygon = PoolVector2Array( 176.835, 254.967, 1489.72, 254.967, 1537.29, 930.437, 174.457, 944.707, 276.729, 642.649 )
+
+[node name="SupplyArea" type="Area2D" parent="."]
+position = Vector2( -91.6478, 347.915 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SupplyArea"]
+shape = SubResource( 1 )
+
+[node name="Polygon2D" type="Polygon2D" parent="SupplyArea"]
+color = Color( 0.227451, 0.376471, 0.290196, 1 )
+polygon = PoolVector2Array( -84.96, -78.1999, 90.4025, -79.6141, 83.3314, 73.121, -89.2027, 80.192 )
+
+[node name="UnloadArea" type="Area2D" parent="."]
+position = Vector2( 1414.78, 334.701 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UnloadArea"]
+shape = SubResource( 1 )
+
+[node name="Polygon2D" type="Polygon2D" parent="UnloadArea"]
+color = Color( 0.376471, 0.231373, 0.227451, 1 )
+polygon = PoolVector2Array( -84.96, -78.1999, 90.4025, -79.6141, 83.3314, 73.121, -89.2027, 80.192 )
+
+[node name="Car" parent="." instance=ExtResource( 1 )]
+position = Vector2( -106.001, 461.303 )
+rotation = -1.60381
+
+[node name="Canvas" type="CanvasLayer" parent="."]
+
+[node name="DeliveredLabel" type="Label" parent="Canvas"]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "Delivered: "
+
+[node name="DeliveredValueLabel" type="Label" parent="Canvas"]
+margin_left = 69.9256
+margin_right = 109.926
+margin_bottom = 14.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
